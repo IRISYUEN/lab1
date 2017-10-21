@@ -24,6 +24,7 @@ public class ProjectOne {
     public static void main(String[] args) throws IOException {
     Scanner sc = new Scanner(System.in); 
     System.out.println("Please input file address : ");
+    String fileAdr = scanner.nextLine();
     InputStream fi = new FileInputStream(fileAdr);    
      int c;
      String word1,word2;
