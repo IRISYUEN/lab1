@@ -24,10 +24,9 @@ public class ProjectOne {
     public static void main(String[] args) throws IOException {
     Scanner sc = new Scanner(System.in); 
     System.out.println("Please input file address : ");
-    String fileAdr = sc.nextLine();  //璇诲彇瀛楃涓插瀷杈撳叆 
-//    InputStream fi = new FileInputStream("/Users/Thinkpad/Desktop/111.txt");    
     InputStream fi = new FileInputStream(fileAdr);    
-     int c;   String word1,word2;
+     int c;
+     String word1,word2;
     while (( c = fi.read() )!= -1) {
         Character m = new Character((char)c);
         if (Character.isLetter(m)) {
@@ -64,16 +63,13 @@ public class ProjectOne {
     System.out.println("Please input string to create new text : ");
     String inputText = sc.nextLine(); 
     System.out.println(generateNewText(inputText));
-//  System.out.println(generateNewText("Seek to explore new and exciting synergies"));
     System.out.println("--------------------------------------------------------");
     Floyd();
     System.out.println("Please input word1 and word2 to query shortest path: ");
     word1 = sc.nextLine(); word2 = sc.nextLine(); 
     System.out.println(calcShortestPath(word1,word2));
-//    System.out.println(calcShortestPath("to","strange"));
     System.out.println("Please input a word to find the shortest path to others :");
     word1 = sc.nextLine();
-//    findPathToOther("to");
     findPathToOther(word1);
     System.out.println("--------------------------------------------------------");
     String randomText = randomWalk();
