@@ -1,45 +1,43 @@
-package project_one;
+package lab1;
 
-
-import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import java.io.*;
 import java.lang.Character;
+import java.util.*;
+import java.util.regex.Pattern;
 
 public class ProjectOne {
-    static int[][] e;
-    static int[][] d;
-    static int[][] path;
-    static String[] txtWordArray;
-    static int wordNum = 0;
-    static boolean flag = true;
-    static final int INFINITY = 10000;
-    static StringBuffer preStr = new StringBuffer();
-    static StringBuffer pathWay = new StringBuffer();
-    static StringBuffer randomPath = new StringBuffer();
-    static List<String> wordList = new ArrayList<String>();
-    static List<String> edgePairList = new ArrayList<String>();
-    static HashMap<String, List<String>> map = new HashMap<String, List<String>>();
-    static Pattern p = Pattern.compile("[.,\"\\?!:' ]");
-
-    public static void main(String[] args) throws IOException {
-        Scanner scanner1 = new Scanner(System.in);
-        System.out.println("Please input file adress : ");
-        String fileAdr = scanner1.nextLine();
-        final InputStream fi = new FileInputStream(fileAdr);
-        int c;
-        String word1;
-        String word2;
-        while ((c = fi.read()) != -1) {
-            Character m = new Character((char) c);
-            if (Character.isLetter(m)) {
-                preStr.append(m.toString());
-            } else if (p.matcher(m.toString()).matches()) {
+  static int[][] e;
+  static int[][] d;
+  static int[][] path;
+  static String[] txtWordArray;
+  static int wordNum = 0;
+  static boolean flag = true;
+  static final int INFINITY = 10000;
+  static StringBuffer preStr = new StringBuffer();
+  static StringBuffer pathWay = new StringBuffer();
+  static StringBuffer randomPath = new StringBuffer();
+  static List<String> wordList = new ArrayList<String>();
+  static List<String> edgePairList = new ArrayList<String>();
+  static HashMap<String, List<String>> map = new HashMap<String, List<String>>();
+  static Pattern p = Pattern.compile("[.,\"\\?!:' ]");
+  
+  public static void main(String[] args) throws IOException { 
+    Scanner scanner1 = new Scanner(System.in);
+    System.out.println("Please input file adress : ");
+    String fileAdr = scanner1.nextLine();
+    final InputStream fi = new FileInputStream(fileAdr);
+    int c;
+    String word1;
+    String word2;
+    while ((c = fi.read()) != -1) {
+      Character m = new Character((char) c);
+      if (Character.isLetter(m)) {
+        preStr.append(m.toString());
+        } else if (p.matcher(m.toString()).matches()) {
                 preStr.append(" ");
             }
         }
-        // create word array
+        // create word array.
         txtWordArray = preStr.toString().toLowerCase(Locale.ROOT).trim().split("\\s+");
         System.out.print("The Text equal to : ");
         for (String word : txtWordArray) {
@@ -92,7 +90,8 @@ public class ProjectOne {
             } else if (!map.containsKey(key)) {
                 return "No bridge words from word1 to word2!";
             } else {
-                StringBuffer result = new StringBuffer("The bridge from " + word1 + " to " + word2 + "  are: ");
+                StringBuffer result = new StringBuffer("The bridge from "
+            + word1 + " to " + word2 + "  are: ");
                 for (String bridge : map.get(key)) {
                     result.append(bridge + " ");
                 }
@@ -111,7 +110,8 @@ public class ProjectOne {
                 if (e[i][j] != INFINITY) {
                     String word1 = graph.wordList.get(i);
                     String word2 = graph.wordList.get(j);
-                    System.out.printf("Edge: " + word1 + " --> " + word2 + "   Weigth: %d\n", e[i][j]);
+                    System.out.printf("Edge: " + word1 + " --> " 
+                    + word2 + "   Weigth: %d\n", e[i][j]);
                 }
             }
         }
@@ -123,7 +123,7 @@ public class ProjectOne {
         int i;
         int j;
         String pre ;
-        pre= "#"; // NOPMD by ThinkPad on 17-10-19 下午10:38
+        pre = "#"; 
         for (String word : txtWordArray) {
             if (pre != "#") {
                 preNum = wordList.indexOf(pre);
